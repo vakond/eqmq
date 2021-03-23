@@ -24,6 +24,7 @@ pub async fn run(cfg: &config::Publisher) -> anyhow::Result<()> {
         )
         .await?;
     info!("Declared exchange '{}'", config::EXCHANGE);
+    info!(state=?conn.status().state());
 
     channel
         .queue_bind(
@@ -35,6 +36,7 @@ pub async fn run(cfg: &config::Publisher) -> anyhow::Result<()> {
         )
         .await?;
     info!("Bound queue '{}'", config::QUEUE);
+    info!(state=?conn.status().state());
 
     info!("will produce");
     for _ in 0..100 {
