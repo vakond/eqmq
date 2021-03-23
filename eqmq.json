@@ -1,0 +1,9 @@
+{
+  "environment": "proof-of-concept",
+  "publisher": {
+    "endpoint": "amqp://localhost:5672"
+  },
+  "consumer": {
+    "endpoint": "amqp://localhost:5672"
+  }
+}
