@@ -1,7 +1,7 @@
 [package]
 name = "eqmq"
 version = "0.0.1"
-authors = ["Equilibrium <team@equilibrium.io>"]
+authors = ["Vasily Kondratyev <wassily.kondratiev@gmail.com>"]
 edition = "2018"
 
 [dependencies]

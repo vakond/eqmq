@@ -21,8 +21,8 @@ pub async fn run(cfg: &config::Consumer) -> anyhow::Result<()> {
             FieldTable::default(),
         )
         .await?;
-    info!(state=?conn.status().state());
     info!(?queue, "Declared");
+    info!(state=?conn.status().state());
 
     info!("will consume");
     let mut consumer = channel

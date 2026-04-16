@@ -9,18 +9,22 @@ mod consumer;
 mod publisher;
 
 fn main() {
+    init_logger();
     if let Err(err) = execute(cli::application()) {
         eprintln!("Error: {:#}", err);
     }
 }
 
-/// Dispatches CLI commands.
-fn execute(app: cli::Application) -> anyhow::Result<()> {
+/// Initializes the logger.
+fn init_logger() {
     if std::env::var("RUST_LOG").is_err() {
         std::env::set_var("RUST_LOG", "info");
     }
     tracing_subscriber::fmt::init();
+}
 
+/// Dispatches CLI commands.
+fn execute(app: cli::Application) -> anyhow::Result<()> {
     match app.cmd {
         cli::Command::Run => {
             let config_file = app.config.unwrap_or("eqmq.json".into());
